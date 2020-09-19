@@ -1,18 +1,31 @@
 import React, {useState} from 'react'
 
-export const Appointment = ({customer}) => {
+export const Appointment = (props) => {
   // console.log('props', props)
+  const {customer, startsAt} = props
   return (
     <div>
-      {customer.firstName}
+      <h3 className="appointment-title">Today 's appointment at {new Date(startsAt).toLocaleTimeString()}
+      </h3>
+      <p>
+        Customer: {customer.firstName
+}
+      </p>
+      <p>
+        Service: {customer.service
+}
+      </p>
+      <p>Stylist : {customer.stylist
+}
+      </p>
+      <p>Notes : {customer.notes
+}
+      </p>
       {/* Bineta */}
     </div>
   )
 }
-
-export const AppointmentsDayView = ({appointments}) => {
-
-  //   const appt = appointments.length === 0     ? <p>There are no appointments
+export const AppointmentsDayView = ({appointments}) => { //   const appt = appointments.length === 0     ? <p>There are no appointments
   // scheduled for today</p>     : <ol>       {appointments.map((appointment) =>
   // <li
   // key={appointment.startsAt}>{appointmentTimeOfDay(appointment.startsAt)}</li
@@ -31,6 +44,7 @@ export const AppointmentsDayView = ({appointments}) => {
         </li >)
 }
       </ol>
+
       {appointments.length === 0
         ? <p>There are no appointments scheduled for today</p>
         : <Appointment { ...appointments[selectedAppointment] }/>
